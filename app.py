@@ -21,6 +21,11 @@ def get_vector_store(documents):
 
 template = """Always Greet the user. Use the following pieces of context to answer the question at the end.
 Try to give meaningful answers to all the questions related to Jobsflow.
+
+If the context does not mention anything about the question. 
+Reply with:
+"I am sorry, but I couldn't find the information you are looking for. If you have another question regarding Jobsflow.ai, feel free to ask!"
+
 If you don't know the answer, just say that you don't know, don't try to make up an answer.
 Use three sentences maximum and keep the answer as concise as possible.
 
