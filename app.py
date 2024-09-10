@@ -9,7 +9,7 @@ from langchain_core.runnables import RunnablePassthrough
 
 @st.cache_data
 def load_data():
-    return load_and_preprocess_data('scraped_data2.json')
+    return load_and_preprocess_data('scraped_data.json')
 
 @st.cache_resource
 def load_model():
