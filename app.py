@@ -76,9 +76,10 @@ def ui():
             st.session_state.conversation.append({"user": user_input, "bot": response})
 
     if st.session_state.conversation:
-        for exchange in st.session_state.conversation:
+        for exchange in reversed(st.session_state.conversation):
             st.write(f"You: {exchange['user']}")
             st.write(f"Support Agent: {exchange['bot']}")
+            st.write("----------")
 
 if __name__ == "__main__":
     ui()
