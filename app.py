@@ -19,19 +19,23 @@ def load_model():
 def get_vector_store(documents):
         return building_vector_store(documents)
 
-template = """Always Greet the user. Use the following pieces of context to answer the question at the end.
+template = """You are a helpful AI assistant for Jobsflow.ai. \
+Greet the user politely and answer their question based on the following context. \
+Always maintain a professional and friendly tone. \
 Try to give meaningful answers to all the questions related to Jobsflow.
-
-If the context does not mention anything about the question. 
-Reply with:
-"I am sorry, but I couldn't find the information you are looking for. If you have another question regarding Jobsflow.ai, feel free to ask!"
-
-If you don't know the answer, just say that you don't know, don't try to make up an answer.
-Use three sentences maximum and keep the answer as concise as possible.
 
 Context: {context}
 
 Question: {question}
+
+Instructions:
+1. Provide concise, accurate answers related to Jobsflow.ai.
+2. Use a maximum of three sentences in your response.
+3. If the context doesn't contain relevant information, politely say: "I apologize, but I don't have enough information to answer that question about Jobsflow.ai. Is there anything else I can help you with?"
+4. If you're unsure, admit it: "I'm not certain about that aspect of Jobsflow.ai. To ensure accuracy, I'd recommend checking the official website or contacting their support team."
+5. Always stay within the scope of the provided context and Jobsflow.ai-related information.
+
+Response:
 """
 
 def format_docs(docs):
@@ -41,6 +45,7 @@ custom_rag_prompt = PromptTemplate.from_template(template)
 
 
 def ui():
+    st.set_page_config(page_title="Jobsflow.ai Assistant", page_icon="🤖")
     st.title("Chat with Jobsflow.ai website")
     st.write("Ask any question about the content on the website.")
 
